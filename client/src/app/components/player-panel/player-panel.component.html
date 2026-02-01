@@ -1,0 +1,63 @@
+@if (player) {
+<div class="player-panel">
+    <div class="player-card">
+        <div class="top-section">
+            <div class="name-avatar-container">
+                <div class="name-container">
+                    <h3>{{ player.name }}</h3>
+                </div>
+                <div class="avatar-container">
+                    <img [src]="playerAvatar" alt="{{ player.name }}'s avatar" class="avatar" />
+                </div>
+            </div>
+            <div class="inventory-container">
+                @for (item of inventory; track item.uniqueId) {
+                <div class="inventory-item">
+                    <img alt="inventory-icon" [src]="item.image" [alt]="item.uniqueId" class="inventory-icon" draggable="false" />
+                    <span class="tooltip">{{ item.tooltip }}</span>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <ul>
+                <li>
+                    <img draggable="false" [src]="iconPaths.Heart" alt="Life" class="stat-icon" />
+                    Vie: {{ player.stats?.life }} / {{ player.stats?.maxLife }}
+                </li>
+                <li class="stat-row">
+                    <div class="stat-item">
+                        <img draggable="false" [src]="iconPaths.Boots" alt="Speed" class="stat-icon" />
+                        Vitesse: {{ player.stats?.maxSpeed }}
+                    </div>
+                    <div class="stat-item">
+                        <img draggable="false" [src]="iconPaths.Boots" alt="Remaining Speed" class="stat-icon" />
+                        Restant: {{ player.stats?.speed }}
+                    </div>
+                </li>
+                <li>
+                    <img draggable="false" [src]="iconPaths.Sword" alt="Attack" class="stat-icon" />
+                    Attaque: <span class="stat-bonus">{{ buffedStats.attack }}</span> + 1d{{ player.stats?.attack }}
+
+                    @if (player.stats?.attack === 4) {
+                    <img draggable="false" [src]="iconPaths.Dice4Face" alt="Attack" class="stat-icon" />
+                    }@else {
+                    <img draggable="false" [src]="iconPaths.Dice6Face" alt="Attack" class="stat-icon" />
+                    }
+                </li>
+                <li>
+                    <img draggable="false" [src]="iconPaths.Shield" alt="Defense" class="stat-icon" />
+                    Defense: <span class="stat-bonus">{{ buffedStats.defense }}</span> + 1d{{ player.stats?.defense }}
+                    @if (player.stats?.defense === 4) {
+                    <img draggable="false" [src]="iconPaths.Dice4Face" alt="Attack" class="stat-icon" />
+                    }@else {
+                    <img draggable="false" [src]="iconPaths.Dice6Face" alt="Attack" class="stat-icon" />
+                    }
+                </li>
+                <li>Actions restantes : {{ actionsLeft }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+}

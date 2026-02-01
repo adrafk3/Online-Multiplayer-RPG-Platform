@@ -1,0 +1,60 @@
+@if (isVisible) {
+<button class="global-chat-button" (click)="toggleChat()" [class.active]="isOpen">
+    <span class="chat-icon">💬</span>
+</button>
+
+@if (isOpen) {
+<div class="chat-overlay" (click)="toggleChat()"></div>
+<div class="chat-panel">
+    <div class="chat-header">
+        <div class="header-content">
+            <div class="header-text">
+                <h3>Chat Global</h3>
+            </div>
+        </div>
+        <button class="close-button" (click)="toggleChat()" title="Fermer">
+            <span>✕</span>
+        </button>
+    </div>
+
+    <div class="chat-messages" #messagesContainer>
+        @if ((messages$ | async)?.length === 0) {
+        <div class="empty-state">
+            <span class="empty-icon">💭</span>
+            <p class="empty-title">Aucun message</p>
+            <p class="empty-subtitle">Soyez le premier à envoyer un message !</p>
+        </div>
+        } @for (message of messages$ | async; track message.timestamp) {
+        <div class="message" [@messageAnimation] [class.own-message]="message.username === currentUsername">
+            <div class="message-bubble">
+                <div class="message-header">
+                    <span class="message-author">{{ message.username }}</span>
+                    <span class="message-time">{{ formatTime(message.timestamp) }}</span>
+                </div>
+                <div class="message-content">{{ message.content }}</div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="chat-input-container">
+        <div class="input-wrapper">
+            <input
+                type="text"
+                class="chat-input"
+                [(ngModel)]="messageText"
+                (keydown.enter)="sendMessage()"
+                placeholder="Écrivez votre message..."
+                maxlength="500"
+                #messageInput
+            />
+            <button class="send-button" (click)="sendMessage()" [disabled]="!canSend()" title="Envoyer">
+                <span class="send-icon">➤</span>
+            </button>
+        </div>
+        <div class="input-footer">
+            <span class="char-count">{{ messageText.length }}/500</span>
+        </div>
+    </div>
+</div>
+} }

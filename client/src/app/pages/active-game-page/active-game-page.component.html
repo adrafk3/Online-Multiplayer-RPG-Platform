@@ -1,0 +1,54 @@
+<div class="game-layout">
+    @if(isGameStart()) { @if(!isCTF()) {
+    <div class="gameInfoPopup">Gagnez 3 combats pour remporter la partie</div>
+    } @else {
+    <div class="gameInfoPopup">Prenez le drapeau et ramenez le à votre point de départ pour faire gagner votre équipe</div>
+    } } @if(isTurnPopupVisible){
+    <div class="gameInfoPopup">C'est à votre tour</div>
+    }
+
+    <div class="left-panel">
+        <app-player-panel class="player-panel"></app-player-panel>
+        <app-game-info class="game-info"></app-game-info>
+        <button
+            class="button active-game"
+            id="action"
+            (click)="isAction()"
+            [class.pressed]="isActionClicked"
+            [disabled]="!isMyTurn || !getAdjacentPlayerOrDoor() || !hasActionLeft() || isMoving"
+            [class.transparent]="!isMyTurn || !getAdjacentPlayerOrDoor() || !hasActionLeft() || isMoving"
+            [matTooltip]="
+                'Double cliquer sur une tuile clignotante pour effectuer l\'action' +
+                (isActionClicked ? '&#10;━━━━━━━━━━━━━━&#10;&#10;Recliquer pour les mouvements&#10;' : '')
+            "
+            matTooltipClass="custom-tooltip"
+            [matTooltipPosition]="'above'"
+        >
+            Action
+        </button>
+        <button
+            class="button active-game"
+            id="finish"
+            (click)="nextTurn()"
+            [disabled]="!isMyTurn || isCombatStarted || isMoving"
+            [class.transparent]="!isMyTurn || isCombatStarted || isMoving"
+        >
+            Finir tour
+        </button>
+    </div>
+
+    <div class="main-grid">
+        <app-active-grid></app-active-grid>
+        <app-vs-pop-up #vsPopup></app-vs-pop-up>
+        <app-inventory-popup></app-inventory-popup>
+    </div>
+
+    <div class="right-panel">
+        <div class="chat-panel-container">
+            <app-log-chat class="chat-panel"></app-log-chat>
+        </div>
+        <app-player-list class="player-list-right"></app-player-list>
+        <app-timer [class.transparent]="!isMyTurn" class="timer"></app-timer>
+        <button class="button active-game" id="quit" (click)="quitGame()">Abandonner la partie</button>
+    </div>
+</div>

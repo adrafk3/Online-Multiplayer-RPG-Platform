@@ -1,0 +1,224 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    top: 2vmin;
+    height: 50vmin;
+    padding: 3vmin;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    gap: 0.6vmin;
+    position: relative;
+}
+
+.access-code {
+    margin-top: 5vmin;
+    font-size: 3.5vmin;
+}
+
+.lobby {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vmin;
+}
+
+.lobby button {
+    height: 5.2vmin;
+    width: 5.2vmin;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    padding: 0.5vmin;
+    transition: transform 0.2s;
+    z-index: 1;
+}
+
+.lobby button.locked {
+    background-color: red;
+}
+
+.lobby button.unlocked {
+    background-color: green;
+}
+
+.lobby button img {
+    width: 4vmin;
+}
+
+.lobby button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.lobby button:hover:not(:disabled) {
+    transform: scale(1.07);
+}
+
+.lobby button:active:not(:disabled) {
+    transform: scale(1);
+}
+
+.loading-container {
+    margin-top: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    visibility: visible;
+    position: relative;
+}
+
+.loading-container.hidden {
+    visibility: hidden;
+}
+
+.loading-text {
+    margin-top: 3.5vmin;
+    font-size: 2vmin;
+    color: #ffffff;
+    white-space: nowrap;
+    position: relative;
+}
+
+.loading-dots {
+    position: absolute;
+    left: 100%;
+    white-space: nowrap;
+}
+
+.below-min-players {
+    color: red;
+}
+
+.above-min-players {
+    color: green;
+}
+
+.player-grid {
+    display: grid;
+    margin-top: 3vmin;
+    gap: 3vmin;
+    justify-content: center;
+    align-items: start;
+}
+
+.player-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-card-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-actions,
+.left-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    width: 25%;
+}
+
+.right-actions {
+    bottom: -17vmin;
+    left: 3vmin;
+}
+
+.left-actions {
+    bottom: -30vmin;
+    right: 3vmin;
+}
+
+.right-actions button,
+.left-actions button {
+    width: 100%;
+}
+
+.right-actions button:disabled,
+.left-actions button:disabled {
+    color: black;
+    background-color: white;
+    border: 0.5vmin solid #0056b3;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.chat {
+    position: absolute;
+    top: 2vmin;
+    right: 4vmin;
+}
+
+.loading-page {
+    --chat-width: 40vmin;
+    --chat-height: 35vmin;
+    --placeholder-font-size: 1.5vmin;
+}
+
+.type-prompt {
+    position: absolute;
+    width: 87%;
+    top: 11.5vmin;
+    left: 1vmin;
+    background-color: rgba(255, 255, 255, 0.771);
+    color: black;
+    padding: 1vmin;
+    border-radius: 0.5vmin;
+    box-shadow: 0 0 1vmin rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3vmin;
+}
+
+.type-prompt-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 14vmin;
+}
+
+.aggressive-button {
+    margin-top: 0.5vmin;
+    background-color: red;
+    border: none;
+    padding: 0.5vmin;
+    color: white;
+    border-radius: 0.3vmin;
+    margin-right: 0.5vmin;
+    width: 100%;
+    font-size: 1.3vmin;
+    transition: transform 0.2s;
+}
+
+.defensive-button {
+    margin-top: 0.5vmin;
+    background-color: blue;
+    border: none;
+    padding: 0.5vmin;
+    color: white;
+    border-radius: 0.3vmin;
+    margin-right: 0.5vmin;
+    width: 100%;
+    font-size: 1.3vmin;
+    transition: transform 0.2s;
+}
+
+.type-prompt-buttons button:hover {
+    transform: scale(1.07);
+}
+
+.type-prompt-buttons button:active {
+    transform: scale(1);
+}

@@ -1,0 +1,9 @@
+<div
+    class="avatar-container"
+    [class.isSelected]="isSelected"
+    [class.unavailable]="!isAvailable"
+    (click)="isAvailable && onSelect()"
+    [style.cursor]="isAvailable ? 'pointer' : 'not-allowed'"
+>
+    <img draggable="false" [src]="avatar.icon" [alt]="avatar.name" class="avatar-icon" />
+</div>

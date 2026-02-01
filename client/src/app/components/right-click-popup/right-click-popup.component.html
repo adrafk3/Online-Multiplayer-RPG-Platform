@@ -1,0 +1,7 @@
+<div (mouseleave)="onClose()" class="popup-content">
+    @if(playerImage){
+    <img class="player-avatar" alt="" [src]="playerImage" draggable="false" fill />
+    }
+    <p>{{ displayText }}</p>
+    <button class="button" mat-button (click)="onClose()">Close</button>
+</div>

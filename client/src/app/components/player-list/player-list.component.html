@@ -1,0 +1,33 @@
+<div class="player-list-container">
+    <span>Joueurs</span>
+    <div class="player-list">
+        <div class="player-list-individual info-row">
+            <span> Nom </span>
+            <span class="victories"> Victoires </span>
+            @if (isCtf()) {
+            <span class="teams team-color"> Équipe </span>
+            }
+            <span class="virtual"> JV </span>
+        </div>
+        @for (player of staticPlayers; track player.id;) {
+        <div class="player-status">
+            <span class="currentTurn" [ngClass]="{ hidden: player.id !== currentTurn?.id }">Actif</span>
+            @if (isCtf() && player.id === flagHolderId) {
+            <span class="flag-holder">🚩</span>
+            } @if(player.isHost) {
+            <span class="host">Hôte</span>
+            }
+        </div>
+        <div class="player-list-individual" [ngClass]="{ barred: isPlayerDisconnected(player.id) }">
+            <span>{{ player.name }} </span>
+            <span class="victories"> {{ player.victories }} </span>
+            @if (isCtf()) {
+            <span class="teams" [ngClass]="{ 'team-color-own': isPartOfOwnTeam(player.id), 'team-color-opponent': !isPartOfOwnTeam(player.id) }">
+                {{ getTeamNumber(player.id) }}
+            </span>
+            }
+            <span class="virtual"> {{ virtualPlayerType(player) }} </span>
+        </div>
+        }
+    </div>
+</div>

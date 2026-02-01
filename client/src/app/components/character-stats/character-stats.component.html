@@ -1,0 +1,65 @@
+<div class="stats-container">
+    <div class="stats-bar">
+        <div class="icon-wrapper">
+            <img draggable="false" src="assets/info_icon.png" alt="Info" class="info-icon" />
+            <span class="tooltip">Détermine votre quantité de points de vie</span>
+        </div>
+        <label class="stat-label"> Vie </label>
+        <div class="bar-container" [ngClass]="{ clicked: isLifeOrSpeedMax() }" (click)="toggleStat(statsType.Life)">
+            @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+            <div class="bar-square" [ngClass]="{ 'filled-life': i - 1 < stats.life, empty: i - 1 >= stats.life }"></div>
+            }
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="icon-wrapper">
+            <img draggable="false" src="assets/info_icon.png" alt="Info" class="info-icon" />
+            <span class="tooltip">Définit l'ordre des tours et les points de mouvement par tour.</span>
+        </div>
+        <label class="stat-label"> Rapidité </label>
+        <div class="bar-container" [ngClass]="{ clicked: isLifeOrSpeedMax() }" (click)="toggleStat(statsType.Speed)">
+            @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+            <div class="bar-square" [ngClass]="{ 'filled-speed': i - 1 < stats.speed, empty: i - 1 >= stats.speed }"></div>
+            }
+        </div>
+    </div>
+
+    <div class="stats-row">
+        <div class="stats-bar">
+            <div class="icon-wrapper">
+                <img draggable="false" src="assets/info_icon.png" alt="Info" class="info-icon" />
+                <span class="tooltip">Définit la puissance de vos attaques. 4 points d'attaques + dé.</span>
+            </div>
+            <label class="stat-label"> Attaque </label>
+            <div class="bar-container" [ngClass]="{ clicked: isAttackOrDefenseMax() }" (click)="toggleStat(statsType.Attack)">
+                @for (i of [1, 2, 3, 4]; track i) {
+                <div class="bar-square" [ngClass]="{ 'filled-attack': i - 1 < stats.attack, empty: i - 1 >= stats.attack }"></div>
+                }
+                <span class="game-text"> + </span>
+                <div class="dice-container" (click)="toggleStat(statsType.Attack)" style="cursor: pointer">
+                    <img draggable="false" [src]="stats.attack === 4 ? 'assets/4_face.png' : 'assets/6_face.png'" class="dice" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-row">
+        <div class="stats-bar">
+            <div class="icon-wrapper">
+                <img draggable="false" src="assets/info_icon.png" alt="Info" class="info-icon" />
+                <span class="tooltip">Réduit les dégâts reçus. 4 points défenses + dé.</span>
+            </div>
+            <label class="stat-label"> Défense </label>
+            <div class="bar-container" [ngClass]="{ clicked: isAttackOrDefenseMax() }" (click)="toggleStat(statsType.Defense)">
+                @for (i of [1, 2, 3, 4]; track i) {
+                <div class="bar-square" [ngClass]="{ 'filled-defense': i - 1 < stats.defense, empty: i - 1 >= stats.defense }"></div>
+                }
+                <span class="game-text"> + </span>
+                <div class="dice-container">
+                    <img class="dice" draggable="false" [src]="stats.defense === 4 ? 'assets/4_face.png' : 'assets/6_face.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

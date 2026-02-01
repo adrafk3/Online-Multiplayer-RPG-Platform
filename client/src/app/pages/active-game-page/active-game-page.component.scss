@@ -1,0 +1,93 @@
+.game-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+    width: 100%;
+    grid-column: 1;
+}
+
+.main-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    grid-column: 2;
+    position: relative;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100%;
+    grid-column: 3;
+    background-color: #000000;
+    gap: 2vmin;
+}
+
+.player-list-right {
+    width: 80%;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 2vmin;
+}
+
+.timer {
+    width: 8vmin;
+    height: 8vmin;
+    margin-bottom: 2vmin;
+    flex-shrink: 0;
+}
+
+.button {
+    width: 30vmin;
+}
+
+#quit {
+    width: 30vmin;
+    background-color: red;
+    color: white;
+    flex-shrink: 0;
+    &:hover {
+        background-color: darkred;
+    }
+}
+
+.transparent {
+    opacity: 0.3;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: white;
+    border: 0.5vmin solid #0056b3;
+}
+
+#quit:hover {
+    background-color: red;
+}
+
+.list {
+    grid-column: 3;
+    grid-row: 3;
+    position: absolute;
+    top: 40%;
+    left: 78%;
+    padding-left: 2vmin;
+}
+
+.pressed {
+    background-color: green;
+}

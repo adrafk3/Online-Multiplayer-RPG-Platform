@@ -1,0 +1,110 @@
+<h3 class="game-text">Statistiques de jeu :</h3>
+<div class="end-game-container">
+    <table>
+        <thead>
+            <tr class="game-text">
+                <th (click)="sortTable('name')">
+                    <div class="header-container">
+                        Nom des Joueurs @if(sortedColumn === 'name') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('nCombats')">
+                    <div class="header-container">
+                        Combats @if(sortedColumn === 'nCombats') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('nEvasions')">
+                    <div class="header-container">
+                        Évasions @if(sortedColumn === 'nEvasions') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('nVictories')">
+                    <div class="header-container">
+                        Victoires @if(sortedColumn === 'nVictories') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('nDefeats')">
+                    <div class="header-container">
+                        Défaites @if(sortedColumn === 'nDefeats') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('hpLost')">
+                    <div class="header-container">
+                        PV Perdus @if(sortedColumn === 'hpLost') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('hpDealt')">
+                    <div class="header-container">
+                        PV Infligés @if(sortedColumn === 'hpDealt') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('nItemsCollected')">
+                    <div class="header-container">
+                        Objets Ramassés @if(sortedColumn === 'nItemsCollected') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+                <th (click)="sortTable('tilesVisitedPercentage')">
+                    <div class="header-container">
+                        % Tuiles Visitées @if(sortedColumn === 'tilesVisitedPercentage') {
+                        <span>{{ isAscending ? '▲' : '▼' }}</span>
+                        }
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (player of players; track player.id) {
+            <tr class="game-text" [ngClass]="{ 'highlight-player': isCurrentUser(player) }">
+                <td>{{ player.name || 'Unknown' }}</td>
+                <td>{{ player.playerStats?.nCombats ?? 0 }}</td>
+                <td>{{ player.playerStats?.nEvasions ?? 0 }}</td>
+                <td>{{ player.playerStats?.nVictories ?? 0 }}</td>
+                <td>{{ player.playerStats?.nDefeats ?? 0 }}</td>
+                <td>{{ player.playerStats?.hpLost ?? 0 }}</td>
+                <td>{{ player.playerStats?.hpDealt ?? 0 }}</td>
+                <td>{{ player.playerStats?.nItemsCollected ?? 0 }}</td>
+                <td>{{ player.playerStats?.tilesVisitedPercentage ?? 0 }}%</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="right-container">
+        <app-game-chat class="chat"></app-game-chat>
+        <div class="global-stats game-text">
+            <p>
+                <strong>Durée :</strong> <span>{{ formattedDuration }}</span>
+            </p>
+            <p>
+                <strong>Nombre total de tours :</strong> <span>{{ globalStats.totalTurns }}</span>
+            </p>
+            <p>
+                <strong>% Tuiles visitées :</strong> <span>{{ globalStats.tilesVisitedPercentage }}%</span>
+            </p>
+            <p>
+                <strong>% Portes manipulées :</strong> <span>{{ globalStats.doorsUsedPercent }}%</span>
+            </p>
+            @if(globalStats.flagHolders.length) {
+            <p>
+                <strong>Nombre de joueurs ayant détenu le drapeau :</strong> <span>{{ globalStats.flagHolders.length }}</span>
+            </p>
+            }
+        </div>
+        <button class="button" (click)="playNewGame()">Commencer une nouvelle partie</button>
+    </div>
+</div>

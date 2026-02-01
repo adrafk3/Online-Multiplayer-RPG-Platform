@@ -1,0 +1,138 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-title {
+    position: relative;
+    bottom: 3vmin;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 4vmin;
+    color: white;
+    text-align: center;
+    margin-top: 6vmin;
+    margin-bottom: 1vmin;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 90vmin;
+    background-image: url('../../../assets/gif_stats.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.arrow {
+    position: absolute;
+    top: 7vmin;
+    left: 3vmin;
+    width: 8vmin;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.arrow:hover {
+    transform: scale(1.1);
+}
+
+.validate-btn {
+    font-family: 'Press Start 2P', sans-serif;
+    position: absolute;
+    bottom: 3vmin;
+    right: 4vmin;
+    background-color: #0056b3;
+    color: white;
+    font-size: 3vmin;
+    padding: 2vmin 4vmin;
+    border: none;
+    border-radius: 2vmin;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.validate-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.validate-btn:not(:disabled):hover {
+    background-color: #007bff88;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vmin;
+    margin-top: 5vmin;
+}
+
+.avatars-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vmin;
+    position: relative;
+    left: 28vmin;
+    bottom: 1vmin;
+    margin-left: 3vmin;
+    margin-right: auto;
+    background-color: rgb(155, 144, 69);
+    padding: 2vmin;
+    border-radius: 1vmin;
+    box-shadow:
+        0 0 0 0.3vmin #4d3a1e,
+        0 0 0 0.5vmin #5e4523,
+        0 0 0 0.7vmin #6f5028,
+        0 0 0 0.9vmin #7f5b2e;
+}
+
+.image-container {
+    position: relative;
+    top: 11.3vmin;
+    width: 40vmin;
+    height: 40vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-image {
+    position: absolute;
+    width: 60vmin;
+    z-index: 2;
+    top: -20vmin;
+}
+
+.pedestal {
+    position: absolute;
+    width: 45.5vmin;
+    top: 29.4vmin;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.stats-container {
+    position: relative;
+    bottom: 8vmin;
+    z-index: 3;
+    border-radius: 1.5vmin;
+    box-shadow:
+        0 0 0 0.3vmin #4d3a1e,
+        0 0 0 0.5vmin #5e4523,
+        0 0 0 0.7vmin #6f5028,
+        0 0 0 0.9vmin #7f5b2e;
+}
+
+.username {
+    z-index: 4;
+}

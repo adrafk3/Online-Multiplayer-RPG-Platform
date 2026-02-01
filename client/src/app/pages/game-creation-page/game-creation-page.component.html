@@ -1,0 +1,19 @@
+@if(cards && cards.length > 0){
+<div class="game-creation-page">
+    <div class="game-creation-page">
+        <main class="page-content">
+            <section class="cards-section">
+                @for (card of cards; track $index){<app-cards [gameData]="card" (gameUpdated)="loadGames()"></app-cards>}
+            </section>
+        </main>
+    </div>
+</div>
+}@else{
+<div class="no-games">
+    <h2>Aucun jeu disponible</h2>
+    <p>
+        Revenez plus tard ou créez-en un
+        <button class="button" routerLink="/admin">ici!</button>
+    </p>
+</div>
+}

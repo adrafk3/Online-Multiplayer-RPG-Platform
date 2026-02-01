@@ -1,0 +1,26 @@
+<div
+    class="card"
+    matTooltip="{{ gameData.description }}"
+    matTooltipPosition="above"
+    [style.backgroundImage]="'url(' + cardBackGround + ')'"
+    matTooltipClass="custom-tooltip"
+    (click)="onCardClick()"
+>
+    <div class="card-header">
+        <img
+            draggable="false"
+            [src]="this.getGameModeImage(this.gameData.gameMode)"
+            alt="Game Mode"
+            class="game-mode-image"
+            [id]="'game-mode-' + gameData.gameMode"
+        />
+        <span class="max-players">
+            0/{{ this.getMaxPlayers(this.gameData.gridSize) }}
+            <span class="icon-container">
+                <img draggable="false" [src]="playersIcon" alt="-" class="players-icon" />
+            </span>
+        </span>
+    </div>
+    <h2 class="card-title">{{ gameData.name }}</h2>
+    <img draggable="false" [src]="'data:image/png;base64,' + gameData.imagePayload" alt="cardImageTest" class="card-image" />
+</div>

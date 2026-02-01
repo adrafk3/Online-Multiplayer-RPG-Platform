@@ -1,0 +1,108 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from '@app/services/alert/alert.service';
+import { EditorService } from '@app/services/editor/editor.service';
+import { Grid } from '@common/interfaces';
+import { firstValueFrom } from 'rxjs';
+import { Routes } from '@app/enums/routes-enums';
+
+@Component({
+    selector: 'app-description',
+    imports: [FormsModule],
+    templateUrl: './description.component.html',
+    standalone: true,
+    styleUrl: './description.component.scss',
+})
+export class DescriptionComponent implements OnInit {
+    @Output() visibilityChange = new EventEmitter<boolean>();
+    private _gameObject: Grid;
+
+    constructor(
+        private alertService: AlertService,
+        private router: Router,
+        private editorService: EditorService,
+    ) {}
+
+    get gameObject() {
+        return this._gameObject;
+    }
+    set gameObject(gameObject: Grid) {
+        this._gameObject = gameObject;
+    }
+
+    @HostListener('document:keydown.enter', ['$event'])
+    async onSubmit() {
+        if (this.gameObject.name && this.gameObject.description) {
+            try {
+                await this.validate();
+                await this.router.navigate([Routes.Admin]);
+                sessionStorage.clear();
+            } catch (error) {
+                if (error instanceof HttpErrorResponse) {
+                    if (error.error instanceof Array) {
+                        const errors: string[] = [];
+                        error.error.forEach((message) => errors.push(message + '\n'));
+                        this.alertService.alert(errors.join(''));
+                        this.visibilityChange.emit(false);
+                    } else if (error.error === 'Jeu non conforme') {
+                        this.alertService.alert("Erreur d'enregistrement : nom déjà utilisé");
+                    } else {
+                        this.alertService.alert("Erreur avec l'enregistrement, essayez plus tard");
+                    }
+                }
+            }
+        } else {
+            this.setColor();
+        }
+    }
+
+    ngOnInit() {
+        const game = sessionStorage.getItem('gameToEdit');
+        if (game && game !== 'undefined') {
+            this.gameObject = JSON.parse(game) as Grid;
+        }
+    }
+
+    reset(event: Event): void {
+        if (event) {
+            const input = event.target as HTMLElement;
+            input.style.color = 'black';
+            input.style.border = '5pt solid cornflowerblue';
+        }
+    }
+    back() {
+        this.visibilityChange.emit(false);
+    }
+    async validate() {
+        this.gameObject.name = this.removeExtraSpaces(this.gameObject.name as string);
+        this.gameObject.description = this.removeExtraSpaces(this.gameObject.description as string);
+        if (!(this.gameObject.name && /\S/.test(this.gameObject.name)) || !(this.gameObject.description && /\S/.test(this.gameObject.description))) {
+            this.alertService.alert('Le nom et la description doivent contenir des caractères visibles');
+            throw new Error();
+        }
+        await firstValueFrom(
+            this._gameObject._id ? this.editorService.updateGame(this.gameObject) : this.editorService.validateAndAddMap(this.gameObject),
+        );
+    }
+    private removeExtraSpaces(input: string): string {
+        return input.replace(/\s{2,}/g, ' ').trim();
+    }
+    private setColor() {
+        if (!this.gameObject.description) {
+            const description = document.getElementById('description');
+            if (description) {
+                description.style.color = 'red';
+                description.style.border = '5pt solid red';
+            }
+        }
+        if (!this.gameObject.name) {
+            const name = document.getElementById('name');
+            if (name) {
+                name.style.color = 'red';
+                name.style.border = '5pt solid red';
+            }
+        }
+    }
+}

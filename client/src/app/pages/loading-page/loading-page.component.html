@@ -1,0 +1,84 @@
+<div class="container loading-page">
+    <div class="access-code game-text">
+        Code d'accès: <span>{{ getRoomId() }}</span>
+    </div>
+
+    <div [class.hidden]="!isLoading" class="loading-container">
+        <div class="loading-text game-text">
+            En attente de joueurs<span class="loading-dots">{{ loadingDots }}</span>
+        </div>
+    </div>
+
+    <div class="lobby">
+        <h3 class="game-text">
+            Joueurs
+            <span
+                [ngClass]="{
+                    'below-min-players': players.length < minPlayers,
+                    'above-min-players': players.length >= minPlayers
+                }"
+            >
+                ({{ players.length }}/{{ maxPlayers }})</span
+            >
+        </h3>
+        @if (isHost()) {
+        <button
+            (click)="onLock()"
+            [ngClass]="{
+                locked: isLocked,
+                unlocked: !isLocked
+            }"
+            [disabled]="players.length >= maxPlayers"
+        >
+            <img [src]="isLocked ? 'assets/waiting_view/lock.png' : 'assets/waiting_view/unlock.png'" alt="Lock Icon" draggable="false" /></button
+        >}
+    </div>
+    <div class="player-grid" [style.gridTemplateColumns]="gridColumns">
+        @for (player of players; track player) {
+        <div class="player-card-wrapper">
+            <app-player-card class="player-card-container" [player]="player" (kick)="onKick(player)"> </app-player-card>
+        </div>
+        }
+    </div>
+
+    @if (isHost()) {
+    <div class="right-actions">
+        <button
+            class="button add-player"
+            (click)="addVirtualPlayer()"
+            [disabled]="isLocked"
+            [matTooltip]="getVirtualPlayerText()"
+            [matTooltipDisabled]="!isLocked"
+            matTooltipClass="custom-tooltip"
+        >
+            Ajouter joueur virtuel
+        </button>
+        @if (isVirtualPlayerTypeVisible) {
+        <div class="type-prompt game-text" (click)="$event.stopPropagation()">
+            <p>Choisissez un type du joueur virtuel</p>
+            <div class="type-prompt-buttons">
+                <button class="aggressive-button game-text" (click)="onChooseVirtualPlayerType('Aggressif'); $event.stopPropagation()">
+                    Agressif
+                </button>
+                <button class="defensive-button game-text" (click)="onChooseVirtualPlayerType('Défensif'); $event.stopPropagation()">Défensif</button>
+            </div>
+        </div>
+        }
+    </div>
+    }
+    <div class="left-actions">
+        @if (isHost()) {
+        <button
+            class="button start-game"
+            (click)="startGame()"
+            [disabled]="players.length < minPlayers || !isLocked || !canStartGame()"
+            [matTooltip]="getStartText()"
+            matTooltipClass="custom-tooltip"
+            [matTooltipPosition]="'above'"
+        >
+            Commencer partie</button
+        >}
+        <button class="button leave-game" (click)="leaveGame()">Quitter partie</button>
+    </div>
+    <app-game-chat class="chat"></app-game-chat>
+</div>

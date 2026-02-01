@@ -1,0 +1,86 @@
+.chat {
+    font-family: 'Press Start 2P', sans-serif;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 0.5vmin;
+    border-radius: 1vmin;
+    width: var(--chat-width, 40vmin);
+    height: var(--chat-height, 20vmin);
+    background-color: #00000087;
+    padding: 1vmin;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#author {
+    font-weight: bold;
+}
+
+#text {
+    font-size: 1.5vmin;
+}
+
+.message {
+    color: white;
+    margin-bottom: 1vmin;
+    padding: 0.5vmin;
+    background-color: #3333339e;
+    border-radius: 0.5vmin;
+    font-size: 1vmin;
+    word-wrap: break-word;
+}
+
+#placeholder {
+    font-size: var(--placeholder-font-size);
+}
+
+.message-info {
+    margin-bottom: 0.5vmin;
+}
+
+.input-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 2vmin;
+}
+
+.button-image {
+    width: 4.5vmin;
+    height: 4.5vmin;
+    cursor: pointer;
+}
+
+.button-image:hover {
+    transform: scale(1.1);
+}
+.my-message {
+    color: red;
+}
+
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100% - 5vmin);
+    padding-right: 1vmin;
+    scroll-behavior: smooth;
+}
+
+.messages-container::-webkit-scrollbar {
+    width: 1vmin;
+}
+.messages-container::-webkit-scrollbar-track {
+    background-color: #222 !important;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ff8c00, #ff0004);
+    border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #ff4500, #ff0055);
+    transform: scale(1.1);
+}

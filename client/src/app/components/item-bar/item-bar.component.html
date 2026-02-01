@@ -1,0 +1,39 @@
+<div class="tool-container" draggable="false">
+    <div class="title-container">
+        <p class="game-text bar-title">Outil à Objets</p>
+    </div>
+    @for (group of groupedItems; track group) {
+    <ng-container>
+        @for (section of filterSectionsByMode(group.sections); track section) {
+        <label class="game-text label">{{ section.label }}</label>
+        <div class="item-container">
+            @for (row of filterItemsByMapSize(section.items); track $index) {
+            <div class="item-row" [class.one-item]="row.length === 1">
+                @for (item of row; track item.id) {
+                <div class="item-icon">
+                    <img
+                        [src]="item.image"
+                        [alt]="''"
+                        [id]="item.id"
+                        draggable="true"
+                        (dragstart)="onDragStart($event, item.id, item.tooltip)"
+                        (dragend)="onDragEnd($event)"
+                        (dragover)="allowDrop($event)"
+                        (drop)="onDrop($event)"
+                        [matTooltip]="item.tooltip"
+                        matTooltipClass="custom-tooltip"
+                    />
+                    @if (section.label === 'Item Aléatoire') {
+                    <p class="game-text label count">{{ getItemLeft() }}</p>
+                    } @if (section.label === 'Positions de Départ') {
+                    <p class="game-text label count">{{ getStartLeft() }}</p>
+                    }
+                </div>
+                }
+            </div>
+            }
+        </div>
+        }
+    </ng-container>
+    }
+</div>

@@ -1,0 +1,9 @@
+@if (showHeader) {
+<app-header></app-header>
+}
+<router-outlet></router-outlet>
+<button class="mute-button" (click)="toggleMute()">
+    {{ isMuted ? '🔇' : '🔊' }}
+</button>
+
+<app-global-chat-menu></app-global-chat-menu>

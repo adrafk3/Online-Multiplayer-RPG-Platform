@@ -1,0 +1,27 @@
+<div class="chat">
+    <div #messagesContainer class="messages-container">
+        @for (message of messages; track message) {
+        <div class="message">
+            <div class="message-info">
+                <span id="time">{{ message.time }}</span>
+            </div>
+            <div id="message-text">
+                <span id="author" [class.my-message]="isMyMessage(message)">{{ message.player.name }} : </span>
+                <span id="text">{{ message.message }}</span>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="input-container">
+        <input
+            id="placeholder"
+            type="text"
+            [(ngModel)]="messageText"
+            (keydown.enter)="sendMessage(messageText)"
+            placeholder="Écrivez votre message"
+            maxlength="200"
+            autocomplete="off"
+        />
+        <img src="./assets/images/arrow.png" alt="Send" id="send" (click)="sendMessage(messageText)" class="button-image" draggable="false" />
+    </div>
+</div>

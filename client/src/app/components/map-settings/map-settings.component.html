@@ -1,0 +1,52 @@
+<div class="map-settings-container">
+    <h2 class="game-text">Réglages De La Carte</h2>
+
+    <form class="map-settings-form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="game-text small-text">Mode du jeu</label>
+            <div class="button-group">
+                <button class="button" type="button" [class.selected]="gameMode === 'Classic'" (click)="gameMode = 'Classic'">Classique</button>
+                <button class="button" type="button" [class.selected]="gameMode === 'CTF'" (click)="gameMode = 'CTF'">Capture the Flag</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="game-text small-text">Grandeur De La Carte</label>
+            <div class="button-group">
+                <button
+                    class="button"
+                    type="button"
+                    [class.selected]="mapSize === 10"
+                    (click)="mapSize = 10"
+                    [matTooltip]="'2 joueurs'"
+                    matTooltipClass="settings-tooltip"
+                >
+                    10x10
+                </button>
+                <button
+                    class="button"
+                    type="button"
+                    [class.selected]="mapSize === 15"
+                    (click)="mapSize = 15"
+                    [matTooltip]="'2 à 4 joueurs'"
+                    matTooltipClass="settings-tooltip"
+                >
+                    15x15
+                </button>
+                <button
+                    class="button"
+                    type="button"
+                    [class.selected]="mapSize === 20"
+                    (click)="mapSize = 20"
+                    [matTooltip]="'2 à 6 joueurs'"
+                    matTooltipClass="settings-tooltip"
+                >
+                    20x20
+                </button>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="button" type="submit" id="editor-button">Éditer La Carte</button>
+        </div>
+    </form>
+</div>

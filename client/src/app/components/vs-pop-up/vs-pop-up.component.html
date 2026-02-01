@@ -1,0 +1,95 @@
+@if(isVisible) {
+<div class="vs-popup-container" [style.backgroundImage]="'url(' + backgroundPath + ')'">
+    <app-combat-choice class="pop-up"></app-combat-choice>
+
+    <div class="player-info left-info">
+        <p>{{ rolePlayer(combatInitiator) }} {{ combatInitiator?.name }}</p>
+        <p>Dernier déroulé: {{ initiatorDiceRoll }}</p>
+        <p>Évasions restantes: {{ combatInitiator?.escapeAttempts ?? 2 }}</p>
+        <div class="stats-container">
+            <div class="stat stat-heart">
+                <img src="./assets/player_pannel_icons/heart.png" alt="Vie" />
+                {{ combatInitiator?.stats?.life }}
+            </div>
+
+            @if(isInitiatorAttacker) {
+            <div class="stat stat-attack">
+                <img src="./assets/player_pannel_icons/sword.png" alt="Attaque" />
+                +{{ combatInitiator?.stats?.attack }}
+            </div>
+            } @else {
+            <div class="stat stat-defense">
+                <img src="./assets/player_pannel_icons/shield.png" alt="Défense" />
+                +{{ combatInitiator?.stats?.defense }}
+            </div>
+            }
+        </div>
+    </div>
+    <div class="player-info right-info">
+        <p>{{ rolePlayer(attackedPlayer) }} {{ attackedPlayer?.name }}</p>
+        <p>Dernier dé roulé: {{ attackedDiceRoll }}</p>
+        <p>Évasions restantes: {{ attackedPlayer?.escapeAttempts ?? 2 }}</p>
+        <div class="stats-container">
+            <div class="stat stat-heart">
+                <img src="./assets/player_pannel_icons/heart.png" alt="Vie" />
+                {{ attackedPlayer?.stats?.life }}
+            </div>
+
+            @if(!isInitiatorAttacker) {
+            <div class="stat stat-attack">
+                <img src="./assets/player_pannel_icons/sword.png" alt="Attaque" />
+                +{{ attackedPlayer?.stats?.attack }}
+            </div>
+            } @else {
+            <div class="stat stat-defense">
+                <img src="./assets/player_pannel_icons/shield.png" alt="Défense" />
+                +{{ attackedPlayer?.stats?.defense }}
+            </div>
+            }
+        </div>
+    </div>
+    <div class="vs-content">
+        <div class="fighter left">
+            @if(combatInitiator?.avatar){
+            <img
+                [src]="
+                    isAttacking && attacker?.id === combatInitiator?.id
+                        ? getAvatarAttackAnimation(combatInitiator?.avatar)
+                        : getAvatarIdleAnimation(combatInitiator?.avatar)
+                "
+                alt="Joueur 1"
+                draggable="false"
+                class="avatar"
+                [class.attacking]="isAttacking && attacker?.id === combatInitiator?.id"
+            />
+            <img [src]="iceDebuff" alt="Joueur 1" draggable="false" class="ice ice-left" [style.opacity]="combatInitiator?.isIceApplied ? 0.7 : 0" />
+            <p class="malus malus-left" [style.opacity]="combatInitiator?.isIceApplied ? 1 : 0">Malus de glace -2</p>
+            }
+        </div>
+        <div class="vs-animation">VS</div>
+        <div class="fighter right">
+            @if(attackedPlayer?.avatar){
+            <img
+                [src]="
+                    isAttacking && attacker?.id === attackedPlayer?.id
+                        ? getAvatarAttackAnimation(attackedPlayer?.avatar)
+                        : getAvatarIdleAnimation(attackedPlayer?.avatar)
+                "
+                alt="Joueur 2"
+                class="mirrored avatar"
+                draggable="false"
+                [class.attacking]="isAttacking && attacker?.id === attackedPlayer?.id"
+            />
+            <img
+                [src]="iceDebuff"
+                alt="Ice debuff"
+                draggable="false"
+                class="ice ice-right"
+                [style.opacity]="attackedPlayer?.isIceApplied ? 0.7 : 0"
+            />
+            <p class="malus malus-right" [style.opacity]="attackedPlayer?.isIceApplied ? 1 : 0">Malus de glace -2</p>
+            }
+        </div>
+    </div>
+</div>
+}

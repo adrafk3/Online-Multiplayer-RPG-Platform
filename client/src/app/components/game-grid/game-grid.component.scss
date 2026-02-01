@@ -1,0 +1,94 @@
+.grid {
+    display: grid;
+    justify-content: center;
+    width: 70vmin;
+    height: 70vmin;
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1vmin;
+    gap: 5vmin;
+    box-sizing: border-box;
+}
+
+.button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 30vmin;
+    margin-bottom: 5vmin;
+    &:hover {
+        cursor: pointer;
+    }
+    font-size: 1.4vmin;
+    height: 8vmin;
+}
+
+.enter {
+    color: white;
+    background-color: green;
+    &:hover {
+        background-color: lightgreen;
+        color: black;
+    }
+}
+
+.reset {
+    color: white;
+    background-color: darkred;
+    &:hover {
+        background-color: indianred;
+        color: black;
+    }
+}
+
+.tile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+    text-align: center;
+    user-select: none;
+    z-index: 0;
+}
+
+.tile:hover {
+    border: 0.3vmin solid darkred;
+}
+
+.tile-image {
+    pointer-events: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.item-icon {
+    cursor: grab;
+    position: absolute;
+    z-index: 10;
+    width: 50%;
+    height: 50%;
+    object-position: center;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

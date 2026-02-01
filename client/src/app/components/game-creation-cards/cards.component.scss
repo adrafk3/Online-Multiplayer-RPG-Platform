@@ -1,0 +1,98 @@
+.card {
+    background-color: #d9e3f0;
+    box-shadow: 0px 0.5vmin 1vmin rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    width: 40vmin;
+    position: relative;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    box-sizing: border-box;
+    box-shadow:
+        0px 0px 0px 0.5vmin #0066cc,
+        0px 0px 0px 1vmin #0099ff,
+        0px 0px 0px 1.5vmin #33afff;
+    margin-bottom: 6vmin;
+    justify-self: center;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0px 0px 0px 0.6vmin #0066cc,
+        0px 0px 0px 1.2vmin #0099ff,
+        0px 0px 0px 2.1vmin #33afff;
+}
+
+.card img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.card .game-mode-image {
+    margin-top: 1vmin;
+    margin-left: 2vmin;
+    position: absolute;
+    height: 5vmin;
+    width: 5vmin;
+    object-fit: cover;
+}
+
+.card #game-mode-Classic {
+    width: 7vmin;
+    top: 1vmin;
+    left: -1vmin;
+}
+.card #game-mode-CTF {
+    top: -0.1vmin;
+    left: -1vmin;
+    width: 7vmin;
+}
+
+.card .max-players {
+    position: absolute;
+    top: 1vmin;
+    right: 3vmin;
+    font-size: 2vmin;
+    color: black;
+    padding: 0.5vmin 1vmin;
+    border-radius: 1vmin;
+    font-weight: bold;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.5vmin;
+}
+
+.card .players-icon {
+    width: 4vmin;
+    height: 4vmin;
+    left: 6vmin;
+    bottom: -1vmin;
+    position: absolute;
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4vmin;
+    height: 2vmin;
+}
+
+.card-title {
+    position: relative;
+    width: 100%;
+    height: 10vmin;
+    font-family: 'Press Start 2P', sans-serif;
+    text-align: center;
+    font-size: 3vmin;
+    white-space: normal;
+    word-break: break-word;
+    display: flex;
+    right: 1vmin;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0 2vmin;
+}

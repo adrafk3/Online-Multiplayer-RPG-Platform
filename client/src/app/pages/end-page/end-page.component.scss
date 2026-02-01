@@ -1,0 +1,119 @@
+.end-game-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2vmin;
+}
+
+.game-text {
+    color: white;
+    background-color: black;
+    font-size: 1.6vmin;
+}
+
+h3 {
+    font-size: 3vmin !important;
+}
+
+table {
+    width: 90%;
+    height: auto;
+    margin: 2vmin 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    user-select: none;
+}
+
+th,
+td {
+    display: flex;
+    width: 10%;
+    height: 5vmin;
+    color: white;
+    border: solid #ddd;
+    padding: 1vmin;
+    vertical-align: middle;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+th {
+    background-color: #333;
+    text-align: center;
+}
+
+th:hover {
+    cursor: pointer;
+    background-color: #505050;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+td {
+    background-color: black;
+}
+
+.highlight-player td:first-child {
+    background-color: rgba(255, 255, 0, 0.685);
+    border: solid yellow;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vmin;
+    width: 25%;
+    min-width: 25%;
+    box-sizing: border-box;
+}
+
+.chat {
+    --chat-width: 94;
+    --chat-height: 40vmin;
+    --placeholder-font-size: 1.7vmin;
+    margin-bottom: 2vmin;
+    left: 4vmin;
+}
+
+.chat-message {
+    -bottom: 5px;
+}
+
+.global-stats {
+    color: white;
+    width: 94%;
+    top: 30vmin;
+    border: solid #ddd;
+    padding: 1vmin;
+    margin: 2vmin 0;
+    border-radius: 1vmin;
+    text-align: left;
+}
+
+.global-stats.game-text {
+    font-size: 1.5vmin;
+    flex-direction: column;
+    margin: 0 0 1vmin 0;
+}
+
+.global-stats.game-text p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vmin;
+}
+
+.global-stats.game-text p span {
+    text-align: right;
+    margin-left: 1vmin;
+}
+
+.button {
+    width: 100%;
+}

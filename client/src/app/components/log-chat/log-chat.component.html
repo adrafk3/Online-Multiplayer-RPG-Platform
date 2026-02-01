@@ -1,0 +1,23 @@
+<div class="buttons">
+    <button class="logButton" [class.active]="!areLogsChosen" (click)="seeChat()">Chat</button>
+    <button class="logButton" [class.active]="areLogsChosen" (click)="seeLogs()">Journal</button>
+</div>
+@if (areLogsChosen) {
+<div class="logs">
+    <div (mouseover)="scrollDown = false" (mouseleave)="scrollDown = true" #logsContainer class="logs-container">
+        @for (log of logs; track log) {
+        <div class="log">
+            <div class="log-date">
+                <span id="time">{{ log.message.time }}</span>
+            </div>
+            <div id="log-text">
+                <span id="text">{{ log.message.message }}</span>
+            </div>
+        </div>
+        }
+    </div>
+    <button class="myLogs" [class.active]="areLogsFiltered" (click)="filterLogs()">Mon journal</button>
+</div>
+} @else {
+<app-game-chat></app-game-chat>
+}

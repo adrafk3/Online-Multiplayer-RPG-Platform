@@ -1,0 +1,12 @@
+@if(isVisible) {
+<div class="combat-choice-popup">
+    <h2>Faites votre choix</h2>
+
+    <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="timeLeftPercentage"></div>
+    </div>
+
+    <button (click)="attack()">Attaquer</button>
+    <button (click)="flee()" [disabled]="isFleeDisabled">Fuir</button>
+</div>
+}

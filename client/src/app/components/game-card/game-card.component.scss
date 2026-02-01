@@ -1,0 +1,67 @@
+.game-card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border-radius: 2vmin;
+    padding: 3vmin;
+    gap: 3vmin;
+    height: 9.75vmin;
+    width: 130vmin;
+}
+
+.game-details {
+    flex-grow: 1;
+}
+
+.game-details h2 {
+    margin: 0;
+    font-size: 3vmin;
+    text-align: left;
+    padding-bottom: 2vmin;
+}
+
+.game-details p {
+    margin: 1vmin 0;
+    font-size: 2vmin;
+    color: #aaaaaa;
+}
+
+.game-actions {
+    border: 20px black;
+}
+
+.game-actions button {
+    background: white;
+    border: 20px black;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 0 5px;
+    transition: transform 0.2s;
+}
+
+.map-image img {
+    width: 15vmin;
+    height: 15vmin;
+}
+
+button img {
+    width: 8vmin;
+    height: 8vmin;
+}
+
+.game-actions button:hover {
+    transform: scale(1.1);
+}
+
+.game-actions button:active {
+    transform: scale(1);
+}
+
+#map-size {
+    text-align: left;
+}
+
+#last-modified {
+    text-align: right;
+}

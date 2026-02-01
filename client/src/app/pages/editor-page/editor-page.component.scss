@@ -1,0 +1,19 @@
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    gap: 20pt;
+}
+
+.left-bar,
+.right-bar {
+    height: 100%;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

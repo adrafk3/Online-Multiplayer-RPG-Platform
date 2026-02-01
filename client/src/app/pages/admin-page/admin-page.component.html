@@ -1,0 +1,45 @@
+<div class="container">
+    <button class="button new-game-btn-wrapper" routerLink="/settings-editor">Créer un nouveau jeu</button>
+
+    <app-collapsible-menu label="Classic" [games]="filteredGames('Classic')">
+        <table class="game-table game-text">
+            <tbody>
+                @for (game of filteredGames('Classic'); track game) {
+                <tr>
+                    <app-game-card
+                        [game]="formatGame(game)"
+                        (edit)="onEditGame(game._id)"
+                        (hide)="onHideGame(game._id)"
+                        (delete)="onDeleteGame(game._id)"
+                    ></app-game-card>
+                </tr>
+                } @empty {
+                <tr>
+                    <td>Wow, c'est vide ici...</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </app-collapsible-menu>
+
+    <app-collapsible-menu label="Capture The Flag" [games]="filteredGames('CTF')">
+        <table class="game-table game-text">
+            <tbody>
+                @for (game of filteredGames('CTF'); track game) {
+                <tr>
+                    <app-game-card
+                        [game]="formatGame(game)"
+                        (edit)="onEditGame(game._id)"
+                        (hide)="onHideGame(game._id)"
+                        (delete)="onDeleteGame(game._id)"
+                    ></app-game-card>
+                </tr>
+                } @empty {
+                <tr>
+                    <td>Wow, c'est vide ici...</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </app-collapsible-menu>
+</div>

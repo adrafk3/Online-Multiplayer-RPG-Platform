@@ -1,0 +1,17 @@
+@if (userProfile$ | async; as profile) {
+<button class="profile-button" (click)="toggleMenu()" title="Profil">
+    <img [src]="getAvatarPath(profile.avatar)" alt="Avatar" class="profile-button-img" />
+</button>
+
+@if (showMenu) {
+<div class="profile-dropdown">
+    <div class="profile-header" (click)="goToProfile()">
+        <img [src]="getAvatarPath(profile.avatar)" alt="Avatar" class="profile-avatar" />
+        <div class="profile-info">
+            <div class="profile-username">{{ profile.username }}</div>
+            <div class="profile-email">{{ profile.email }}</div>
+        </div>
+    </div>
+    <button class="logout-button" (click)="logout()">Déconnexion</button>
+</div>
+} }

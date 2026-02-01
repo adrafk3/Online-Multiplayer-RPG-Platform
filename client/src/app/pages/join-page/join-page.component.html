@@ -1,0 +1,28 @@
+<div class="container">
+    <p class="game-text">Entrez le code de la salle</p>
+    <form (ngSubmit)="onSubmit()">
+        <div class="container">
+            @if (roomCodeInput.invalid && (roomCodeInput.dirty || roomCodeInput.touched) && roomId.length === 4) {
+            <div>
+                @if(roomCodeInput.errors?.['pattern']) {
+                <p class="game-text error-text">Veuillez entrer uniquement des chiffres.</p>
+                }
+            </div>
+            } @else {
+            <p class="game-text error-text"></p>
+            }
+            <input
+                type="text"
+                name="roomCode"
+                [(ngModel)]="roomId"
+                required
+                pattern="[0-9]{4}"
+                maxlength="4"
+                placeholder="Code à 4 chiffres"
+                #roomCodeInput="ngModel"
+                autocomplete="off"
+            />
+        </div>
+        <button class="button" [class.disabled-button]="!isValidCode()" type="submit" [disabled]="!isValidCode()">Rejoindre la salle</button>
+    </form>
+</div>

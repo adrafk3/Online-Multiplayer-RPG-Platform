@@ -1,0 +1,19 @@
+@if (isVisible) {
+<div class="popup-overlay">
+    <div class="popup-container">
+        <h2>Choisissez un Item a enlever</h2>
+        <div class="inventory-list">
+            @for (item of inventory; track item.uniqueId) {
+            <div class="inventory-item" (click)="toggleItem(item)">
+                <img [src]="item.image" [alt]="item.uniqueId" class="item-icon" draggable="false" />
+                <p>{{ getItemName(item.id) }}</p>
+                @if(item.selected){
+                <div class="red-x">X</div>
+                }
+            </div>
+            }
+        </div>
+        <button (click)="closePopup()" [disabled]="getItemsCount() !== 2">Terminer</button>
+    </div>
+</div>
+}

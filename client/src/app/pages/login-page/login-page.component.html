@@ -1,0 +1,39 @@
+<div class="container justified">
+    <img src="assets/logo.png" alt="Logo PolyArena" class="logo" draggable="false" />
+    @if (isRegistering){
+    <div class="justified login-container login-container-create">
+        <input class="login-input" type="text" placeholder="Email" [(ngModel)]="email" />
+        <input class="login-input" type="text" placeholder="Pseudonyme" [(ngModel)]="username" />
+        <input class="login-input" type="password" placeholder="Mot de passe" [(ngModel)]="password" />
+        @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+        }
+        <p class="avatar-title">Choisir un avatar pour le compte:</p>
+        <div class="avatar-select-container">
+            @for( avatar of avatars; track avatar){
+            <img class="avatar-select" src="{{ avatar }}" (click)="setSelectedAvatar(avatar)" [class.isSelected]="avatar === selectedAvatar" />
+            }
+        </div>
+        <button class="login-button button" (click)="handleLoginButton()">@if (loading) {Chargement...}@else{Créer le compte}</button>
+        <p class="create-title" (click)="setIsRegistering(!isRegistering)">Déja un compte ? Se connecter</p>
+    </div>
+    } @else {
+    <div class="justified login-container">
+        <input class="login-input" type="text" placeholder="Email" [(ngModel)]="email" />
+        <input class="login-input" type="password" placeholder="Mot de passe" [(ngModel)]="password" />
+        @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+        }
+        <button class="login-button button" (click)="handleLoginButton()">@if (loading) {Chargement...}@else { Se connecter }</button>
+        <p class="create-title" (click)="setIsRegistering(!isRegistering)">Nouveau ? Créer un compte</p>
+    </div>
+    }
+
+    <footer class="footer-item">
+        <h4 class="team-name">Équipe 206</h4>
+        <p class="team-name">
+            <span>Brière Simon</span>, <span>Faraoni William</span>, <span>Chauret-Decoste Scotty</span>, <span>Jaures Kanga</span>,
+            <span>Rafai Adam</span>, <span>Jamoussi Ilyes</span>
+        </p>
+    </footer>
+</div>

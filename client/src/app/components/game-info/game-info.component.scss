@@ -1,0 +1,32 @@
+.game-info {
+    color: white;
+    padding: 2vmin;
+    padding-bottom: 2vmin;
+    border-radius: 3vmin;
+    text-align: left;
+    height: 18vmin;
+    width: 36vmin;
+    border: 2px solid white;
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Press Start 2P', sans-serif !important;
+}
+h2 {
+    margin: 0;
+    font-size: 2vmin;
+    margin-bottom: 4vmin;
+    justify-self: center;
+    text-align: center;
+}
+
+p {
+    font-size: 1.3vmin;
+    margin-bottom: 1vmin;
+}
+
+.debug {
+    font-size: 1.3vmin;
+    justify-self: center;
+    color: red;
+    text-align: center;
+}

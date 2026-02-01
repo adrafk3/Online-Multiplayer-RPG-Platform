@@ -1,0 +1,85 @@
+.map-settings-container {
+    width: 90vmin;
+    height: 70vmin;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    gap: 10vh;
+    padding: 20px;
+}
+
+.map-settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4pt;
+}
+
+.button-group {
+    display: flex;
+    gap: 20pt;
+    justify-content: center;
+}
+
+.button-group button {
+    padding: 25pt 50pt;
+    font-size: 10pt;
+    background-color: #ccc;
+    color: black;
+    border: 2pt solid white;
+    border-radius: 15pt;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-group button.selected {
+    color: white;
+    background-color: #0056b3;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.button-group button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+#editor-button {
+    background-color: green;
+    color: white;
+    &:hover {
+        cursor: pointer;
+        color: black;
+        background-color: lightgreen;
+    }
+}
+
+.small-text {
+    font-size: 16px;
+}

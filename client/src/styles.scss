@@ -1,0 +1,264 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$indigo-pink-theme: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+            accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400),
+            warn: mat.m2-define-palette(mat.$m2-red-palette),
+        ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($indigo-pink-theme);
+
+.deeppurple-amber-theme {
+    $deeppurple-amber-theme: mat.m2-define-light-theme(
+        (
+            color: (
+                primary: mat.m2-define-palette(mat.$m2-deep-purple-palette),
+                accent: mat.m2-define-palette(mat.$m2-amber-palette, A200, A100, A400),
+            ),
+        )
+    );
+    @include mat.all-component-colors($deeppurple-amber-theme);
+}
+
+.pink-bluegrey-theme {
+    $pink-bluegrey-theme: mat.m2-define-dark-theme(
+        (
+            color: (
+                primary: mat.m2-define-palette(mat.$m2-pink-palette, 700, 500, 900),
+                accent: mat.m2-define-palette(mat.$m2-blue-grey-palette, A200, A100, A400),
+            ),
+        )
+    );
+    @include mat.all-component-colors($pink-bluegrey-theme);
+}
+
+.purple-green-theme {
+    $purple-green-theme: mat.m2-define-dark-theme(
+        (
+            color: (
+                primary: mat.m2-define-palette(mat.$m2-purple-palette, 700, 500, 800),
+                accent: mat.m2-define-palette(mat.$m2-green-palette, A200, A100, A400),
+            ),
+        )
+    );
+    @include mat.all-component-colors($purple-green-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    background-color: black;
+    background-image: url('assets/main_bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+.game-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3vmin;
+    text-align: center;
+    color: white;
+    margin: 0.5vmin;
+    padding: 0.5vmin;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.button {
+    margin-top: 2vmin;
+    margin-bottom: 1vmin;
+    width: 60vmin;
+    text-align: center;
+    background-color: white;
+    border: 0.5vmin solid #0056b3;
+    border-radius: 5vmin;
+    padding: 3vmin;
+    font-family: 'Press Start 2P', sans-serif;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vmin;
+    font-size: 1.5vmin;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #0056b3;
+    border: 0.5vmin solid white;
+    color: white;
+}
+
+.tool-container {
+    width: 15vw;
+    height: 100vh;
+    background-color: #004653;
+    padding-inline: 2vmin;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    overflow-y: auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.title-container {
+    top: 0;
+    background-color: #004653;
+    padding-bottom: 10pt;
+    position: sticky;
+    z-index: 10;
+    border-bottom: 2pt solid black;
+    display: flex;
+}
+
+.bar-title {
+    font-size: 2vmin;
+    line-height: 1.5;
+    padding-top: 8pt;
+    color: white;
+    text-align: center;
+}
+
+.custom-tooltip {
+    background-color: #272727 !important;
+    color: #000000 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 2vmin !important;
+    padding: 1vmin 1vmin !important;
+    border: 0.5vmin solid #2121213a !important;
+    border-radius: 1vmin !important;
+    box-shadow: 0.5vmin 0.5vmin 2pt rgba(0, 0, 0, 0.2) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: flex;
+}
+.settings-tooltip {
+    z-index: 4;
+    background-color: #000000 !important;
+    color: #ffa500 !important;
+    font-family: 'Press Start 2P', sans-serif !important;
+    font-size: 1.5vmin !important;
+    border-radius: 1vmin !important;
+    padding: 1vmin 1vmin;
+    box-shadow: none !important;
+    position: relative !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+:root {
+    --chat-width: 40vmin;
+    --chat-height: 20vmin;
+    --placeholder-font-size: 1vmin;
+}
+
+.label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 8pt;
+    margin-bottom: 1pt;
+    font-size: 8pt;
+    font-weight: normal;
+}
+
+.error-snackbar {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 2vmin !important;
+    padding: 2vmin 2vmin !important;
+    border: 0.2vmin solid #ff0000 !important;
+    border-radius: 2vmin !important;
+    box-shadow: 0.2vmin 0.2vmin 0.7vmin rgba(0, 0, 0, 0.2) !important;
+    position: relative;
+    white-space: pre-line;
+    width: 55vmin;
+    height: 7vmin;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.gameInfoPopup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2vmin 4vmin;
+    font-size: 4vmin;
+    border-radius: 1vmin;
+    text-align: center;
+    z-index: 1000;
+    opacity: 1;
+    animation: fadeOut 5s ease-in-out forwards;
+    font-family: 'Press Start 2P', sans-serif;
+    pointer-events: none;
+}
+
+::-webkit-scrollbar {
+    padding-left: 0.5vmin;
+    width: 1vmin;
+}
+::-webkit-scrollbar-track {
+    background-color: #222 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ff8c00, #ff0004);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #ff4500, #ff0055);
+    transform: scale(1.1);
+}
+
+@keyframes winner-glow {
+    0% {
+        text-shadow:
+            0 0 10% #00ff00,
+            0 0 20% #00ff00;
+    }
+    100% {
+        text-shadow:
+            0 0 20% #00ff00,
+            0 0 40% #00ff00;
+    }
+}

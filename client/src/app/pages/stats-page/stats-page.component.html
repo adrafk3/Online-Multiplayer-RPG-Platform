@@ -1,0 +1,38 @@
+@if (selectedAvatar) {
+<div class="main-container">
+    <button
+        class="validate-btn"
+        [disabled]="!isValid"
+        (click)="validateStats()"
+        matTooltip="Cliquez sur les barres de stats pour sélectionner un bonus entre vie et rapidité ainsi qu'entre attaque et défense afin de continuer."
+        [matTooltipDisabled]="isValid"
+        matTooltipClass="settings-tooltip"
+    >
+        Valider
+    </button>
+    <h2 class="page-title">Choisissez vos Stats</h2>
+    <div class="image-container">
+        <img draggable="false" [src]="selectedAvatar.animation" alt="Character Image" class="character-image" />
+        <app-player-name-selection
+            class="username"
+            [isVisible]="showUsernameInput"
+            (isVisibleChange)="onUsernameVisibilityChange($event)"
+        ></app-player-name-selection>
+
+        <img draggable="false" src="assets/pedestal.png" alt="Pedestal Image" class="pedestal" />
+    </div>
+
+    <div class="avatars-container">
+        @for (avatar of avatars; track avatar.name) { @if(avatar.name !== 'Knuckles') {
+        <app-avatar-icon
+            [avatar]="avatar"
+            [isSelected]="selectedAvatar.name === avatar.name"
+            [isAvailable]="avatar.isAvailable"
+            (selected)="onAvatarSelected(avatar)"
+        ></app-avatar-icon>
+        } }
+    </div>
+
+    <app-character-stats class="stats-container" (isValidChange)="onIsValidChange($event)"></app-character-stats>
+</div>
+}

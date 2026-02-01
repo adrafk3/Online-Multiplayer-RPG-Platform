@@ -1,0 +1,154 @@
+.player-list-container {
+    font-family: 'Press Start 2P', sans-serif !important;
+    text-align: center;
+    color: white;
+    font-size: 3vmin;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    overflow-x: hidden;
+    padding: 0;
+    background-color: inherit;
+    box-sizing: border-box;
+}
+
+.player-list {
+    background-color: black;
+    margin: 0 auto;
+    padding: 1%;
+    border-radius: 2%;
+    text-align: center;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 60vh;
+    box-sizing: border-box;
+}
+
+.player-list-individual {
+    font-size: 1.5vmin;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+    border: 0.2vmin solid white;
+    border-radius: 1vmin;
+    font-weight: bold;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.barred {
+    text-decoration: line-through;
+    opacity: 0.6;
+    text-decoration-thickness: 30%;
+}
+
+.player-list-individual span {
+    font-size: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.victories {
+    font-weight: bold;
+    color: rgb(0, 149, 255);
+    text-shadow:
+        0 0 1vmin rgb(0, 149, 255),
+        0 0 2vmin rgb(0, 149, 255);
+}
+
+.teams {
+    font-weight: bold;
+}
+
+.team-color {
+    color: rgb(243, 220, 0);
+    text-shadow:
+        0 0 1vmin rgb(243, 220, 0),
+        0 0 2vmin rgb(243, 220, 0);
+}
+
+.team-color-opponent {
+    color: rgb(112, 2, 2);
+    text-shadow:
+        0 0 1vmin rgb(112, 2, 2),
+        0 0 2vmin rgb(112, 2, 2);
+}
+
+.team-color-own {
+    color: rgb(1, 119, 5);
+    text-shadow:
+        0 0 1vmin rgb(1, 119, 5),
+        0 0 2vmin rgb(1, 119, 5);
+}
+
+.virtual {
+    color: rgb(128, 0, 253);
+    text-shadow:
+        0 0 1vmin rgb(128, 0, 253),
+        0 0 2vmin rgb(128, 0, 253);
+}
+
+.host {
+    font-size: 1vmin;
+    font-weight: bold;
+    text-shadow:
+        0 0 1vmin red,
+        0 0 2vmin red;
+    color: red;
+    margin-left: auto;
+    padding-left: 1vmin;
+}
+.flag-holder {
+    font-size: 2vmin;
+}
+.currentTurn {
+    font-size: 1vmin;
+    color: rgb(0, 255, 0);
+    font-weight: bold;
+    text-shadow:
+        0 0 1vmin rgb(0, 255, 0),
+        0 0 2vmin rgb(0, 255, 0);
+}
+
+.player-status {
+    margin-top: 1.5vmin;
+    height: 2vmin;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.player-list-individual > *:first-child {
+    min-width: 10ch;
+    margin-right: auto;
+}
+
+.info-row > *:first-child {
+    min-width: 5ch;
+}
+
+.player-list-individual > *:last-child {
+    margin-left: auto;
+}
+
+.player-list-individual > *:not(:first-child):not(:last-child) {
+    margin: 0 auto;
+}
+
+.pre {
+    white-space: pre;
+}

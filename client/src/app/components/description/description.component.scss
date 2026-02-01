@@ -1,0 +1,68 @@
+.save-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-settings-form {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20pt;
+}
+
+.name-container {
+    margin-top: 10pt;
+}
+
+.description-container {
+    height: 200pt;
+}
+
+input,
+textarea {
+    width: 100%;
+    height: 50%;
+    margin-top: 5pt;
+    border: 5pt solid cornflowerblue;
+    border-radius: 10pt;
+    font-size: 1em;
+    color: black;
+    text-align: left;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#editor-button {
+    background-color: green;
+    color: white;
+    &:hover {
+        cursor: pointer;
+        color: black;
+        background-color: lightgreen;
+    }
+}
+
+.back {
+    background-color: red;
+    height: 5vmin;
+    width: 15vmin;
+    position: absolute;
+    top: 0;
+    margin-top: 10vmin;
+    left: 0;
+    margin-left: 5vmin;
+    color: white;
+    &:hover {
+        background-color: lightpink;
+        color: black;
+    }
+}

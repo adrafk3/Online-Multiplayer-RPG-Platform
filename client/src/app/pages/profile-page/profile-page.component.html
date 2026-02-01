@@ -1,0 +1,122 @@
+@if (userProfile$ | async; as profile) {
+<div class="profile-container">
+    <div class="profile-header">
+        <h1 class="profile-title">{{ profile.username }}</h1>
+    </div>
+
+    <div class="profile-main">
+        <div class="profile-left">
+            @if (!isEditingAvatar) {
+            <div class="avatar-card">
+                <img [src]="getAvatarPath(profile.avatar)" alt="Avatar" class="profile-avatar" />
+                <button class="pixel-button" (click)="toggleEditAvatar(profile.avatar)">MODIFIER AVATAR</button>
+            </div>
+            } @else {
+            <div class="avatar-card">
+                <p class="selector-title">CHOISIR UN AVATAR</p>
+                <div class="avatar-grid">
+                    @for (avatar of avatars; track avatar) {
+                    <img
+                        [src]="avatar"
+                        [class.selected]="selectedAvatar === avatar"
+                        (click)="selectedAvatar = avatar"
+                        class="avatar-option"
+                        alt="Avatar"
+                    />
+                    }
+                </div>
+                <div class="avatar-actions">
+                    <button class="pixel-button primary" (click)="saveAvatar()">ENREGISTRER</button>
+                    <button class="pixel-button" (click)="isEditingAvatar = false">ANNULER</button>
+                </div>
+            </div>
+            }
+
+            <div class="info-card">
+                <div class="info-item">
+                    <span class="info-label">PSEUDO</span>
+                    <span class="info-value">{{ profile.username }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">EMAIL</span>
+                    <span class="info-value">{{ profile.email }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">MEMBRE DEPUIS</span>
+                    <span class="info-value">{{ profile.createdAt | date: 'dd/MM/yyyy' }}</span>
+                </div>
+
+                <div class="danger-section">
+                    @if (!showDeleteConfirm) {
+                    <button class="pixel-button danger" (click)="toggleDeleteConfirm()">SUPPRIMER LE COMPTE</button>
+                    } @else {
+                    <div class="delete-confirm">
+                        <p class="warning">ACTION IRREVERSIBLE!</p>
+                        <p class="confirm-text">Tapez votre pseudo:</p>
+                        <input type="text" [(ngModel)]="confirmUsername" placeholder="Pseudonyme" class="confirm-input" />
+                        <div class="delete-actions">
+                            <button
+                                class="pixel-button danger"
+                                (click)="deleteAccount(profile.username)"
+                                [disabled]="confirmUsername !== profile.username"
+                            >
+                                CONFIRMER
+                            </button>
+                            <button class="pixel-button" (click)="toggleDeleteConfirm()">ANNULER</button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-right">
+            <div class="trophy-showcase">
+                <div class="trophy-icon">🏆</div>
+                <div class="trophy-count">{{ profile.trophies || 0 }}</div>
+                <div class="trophy-label">TROPHEES</div>
+            </div>
+
+            <div class="stats-card">
+                <h2 class="stats-title">STATISTIQUES</h2>
+
+                <div class="mode-stats">
+                    <div class="mode-header">MODE CLASSIQUE</div>
+                    <div class="stats-grid">
+                        <div class="stat-box wins">
+                            <div class="stat-number">{{ profile.classicWins || 0 }}</div>
+                            <div class="stat-label">VICTOIRES</div>
+                        </div>
+                        <div class="stat-box losses">
+                            <div class="stat-number">{{ profile.classicLosses || 0 }}</div>
+                            <div class="stat-label">DEFAITES</div>
+                        </div>
+                        <div class="stat-box ratio">
+                            <div class="stat-number">{{ getWinRate(profile.classicWins || 0, profile.classicLosses || 0) }}%</div>
+                            <div class="stat-label">RATIO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mode-stats">
+                    <div class="mode-header">MODE CTF</div>
+                    <div class="stats-grid">
+                        <div class="stat-box wins">
+                            <div class="stat-number">{{ profile.ctfWins || 0 }}</div>
+                            <div class="stat-label">VICTOIRES</div>
+                        </div>
+                        <div class="stat-box losses">
+                            <div class="stat-number">{{ profile.ctfLosses || 0 }}</div>
+                            <div class="stat-label">DEFAITES</div>
+                        </div>
+                        <div class="stat-box ratio">
+                            <div class="stat-number">{{ getWinRate(profile.ctfWins || 0, profile.ctfLosses || 0) }}%</div>
+                            <div class="stat-label">RATIO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

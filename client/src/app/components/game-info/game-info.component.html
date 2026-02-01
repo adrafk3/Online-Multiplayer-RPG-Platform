@@ -1,0 +1,11 @@
+@if (grid) {
+<div class="game-info">
+    <h2>Informations de partie</h2>
+    <p>Taille de la grille: {{ grid.gridSize }}</p>
+    <p>Joueurs connectés: {{ numberOfPlayers }}</p>
+    <p>
+        C'est le tour de: <span style="color: rgb(212, 122, 220)"> {{ playerNameTurn }}</span>
+    </p>
+    <app-debug class="debug"></app-debug>
+</div>
+}

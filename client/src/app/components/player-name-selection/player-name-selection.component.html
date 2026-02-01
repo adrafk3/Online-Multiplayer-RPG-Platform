@@ -1,0 +1,16 @@
+@if(isVisible){
+<div class="popup-overlay">
+    <div class="popup-box" [style.backgroundImage]="'url(' + backGround + ')'">
+        <button class="close-button" (click)="xButtonClick()">
+            <img draggable="false" src="assets/x_button.png" alt="Retour" class="xButton" />
+        </button>
+        <h2 class="title">Entrez votre pseudo pour la partie</h2>
+        <form (ngSubmit)="validateButtonClick()" (keydown.enter)="preventEnter($event)">
+            <input type="text" [(ngModel)]="username" name="username" placeholder="Votre pseudo" required maxlength="10" />
+            @if(validateUsername()){<button type="submit" class="validate-button">Valider</button>} @else{<button class="desactived-button">
+                Valider</button
+            >}
+        </form>
+    </div>
+</div>
+}

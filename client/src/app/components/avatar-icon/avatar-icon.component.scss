@@ -1,0 +1,35 @@
+.avatar-container {
+    width: 7vmin;
+    height: 7vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5vmin solid #3498db;
+    background: linear-gradient(145deg, #3e5770, #4a627a);
+
+    box-shadow: 0.5vmin 0.5vmin 1.5vmin rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover:not(.unavailable) {
+        transform: scale(1.1);
+    }
+
+    &.unavailable {
+        opacity: 0.5;
+        cursor: not-allowed;
+        border-color: #7f8c8d;
+    }
+
+    &.isSelected {
+        border-color: yellow;
+        transform: scale(1.1);
+    }
+}
+
+.avatar-icon {
+    width: 7vmin;
+    height: 7vmin;
+    position: relative;
+    object-fit: contain;
+}

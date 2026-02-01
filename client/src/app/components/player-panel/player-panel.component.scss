@@ -1,0 +1,201 @@
+.player-panel {
+    font-family: 'Press Start 2P', sans-serif !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vmin;
+    padding: 1vmin;
+}
+
+.player-card {
+    color: white;
+    border: 0.3vmin solid white;
+    border-radius: 3vmin;
+    width: 36vmin;
+    height: 37vmin;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    box-shadow: 0 0.2vmin 0.4vmin rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    padding: 2.5vmin;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.name-avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.name-container {
+    margin-bottom: 2vmin;
+}
+
+h3 {
+    font-size: 2vmin;
+    color: #ffa500;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.avatar {
+    width: 15vmin;
+    height: 15vmin;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.inventory-container {
+    width: 40vmin;
+    height: 20vmin;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vmin;
+    padding: 1vmin;
+}
+
+.inventory-item {
+    position: relative;
+    width: 8vmin;
+    height: 8vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5vmin solid white;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.inventory-icon {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcc00;
+    color: white;
+    padding: 1vmin 2vmin;
+    border-radius: 1vmin;
+    white-space: normal;
+    width: max-content;
+    max-width: 30vmin;
+    min-width: 20vmin;
+    font-size: 1.8vmin;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+    z-index: 1000;
+    margin-bottom: 0.2vmin;
+    line-height: 1.4;
+}
+
+.stat-bonus {
+    color: white;
+    font-weight: bold;
+    margin-left: 0.5vmin;
+}
+
+.inventory-item:hover .tooltip {
+    opacity: 1;
+}
+
+.stats-container {
+    display: flex;
+    margin-top: 1vmin;
+    max-height: 10vmin;
+    align-items: center;
+    justify-content: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.2vmin;
+    padding: 0.7vmin 0;
+    font-size: 1.3vmin;
+    color: #ddd;
+    border-bottom: 0.1vmin solid #444;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+.stat-icon {
+    width: 2vmin;
+    height: 2vmin;
+    object-fit: contain;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: vmin;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.2vmin;
+}
+
+@media (max-width: 20vmin) {
+    .player-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .avatar {
+        width: 10vmin;
+        height: 10vmin;
+    }
+
+    .name-container {
+        margin-bottom: 1vmin;
+    }
+
+    .stats-container {
+        margin-top: 2vmin;
+    }
+
+    h3 {
+        font-size: 1vmin;
+    }
+
+    ul li {
+        padding: 1vmin 0;
+    }
+}

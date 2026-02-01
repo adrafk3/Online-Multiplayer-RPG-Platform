@@ -1,0 +1,29 @@
+<div class="game-card">
+    <div class="map-image" [matTooltip]="game.description" matTooltipClass="custom-tooltip">
+        <img [src]="'data:image/png;base64,' + game.imagePayload" draggable="false" />
+    </div>
+    <div class="game-details">
+        <h2>{{ game.name }}</h2>
+        <p id="map-size">{{ game.gridSize }}x{{ game.gridSize }}</p>
+        <p id="last-modified">{{ game.lastModified }}</p>
+    </div>
+    <div class="game-actions">
+        <button (click)="onEdit()">
+            <img src="assets/edit.png" alt="Edit" draggable="false" />
+        </button>
+    </div>
+    <div class="game-actions">
+        <button (click)="onHide()">
+            <img
+                draggable="false"
+                [src]="game.isHidden ? 'assets/visibility-private.png' : 'assets/visibility-public.png'"
+                [alt]="game.isHidden ? 'Show' : 'Hide'"
+            />
+        </button>
+    </div>
+    <div class="game-actions">
+        <button (click)="onDelete()">
+            <img src="assets/delete.png" alt="Delete" draggable="false" />
+        </button>
+    </div>
+</div>

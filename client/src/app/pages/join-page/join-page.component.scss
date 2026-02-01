@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    height: auto;
+}
+
+div {
+    margin-bottom: 1vmin;
+}
+
+form {
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type='text'] {
+    width: auto;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border: 1vmin solid #0056b3;
+    border-radius: 4px;
+}
+
+.disabled-button {
+    color: gray;
+    cursor: not-allowed;
+    &:hover {
+        border-color: #0056b3;
+        background-color: white;
+    }
+}
+
+.button {
+    color: black;
+    justify-self: center;
+}
+
+.error-text {
+    color: red;
+    font-size: 0.8em;
+}
